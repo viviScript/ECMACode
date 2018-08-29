@@ -51,24 +51,109 @@ a  | b | c
 
 ### 1.5. 链接
 #### 内链式
-[百度1](http://www.baidu.com/"百度一下"){:target="_blank"}    
+    [百度1](http://www.baidu.com/"百度一下"){:target="_blank"}    
 
 #### 引用式
-[百度2][2]{:target="_blank"}
+    [百度2][2]{:target="_blank"}
 [2]: http://www.baidu.com/  "百度二下"
 #### 邮箱链接式
-<xxx@outlook.com>
+    <xxx@outlook.com>
 ### 1.6 图片
 #### 内链式
+    ![name](./01.png '描述')
 #### 引用式
+    ![name][01]
+[01]: ./01.png '描述'
 #### 图片带有链接式
+    ![name](./01.png '百度')](http://www.baidu.com){:target="_blank"}   
+
+[![name](./01.png '百度')][5]{:target="_blank"} 
+[5]: http://www.baidu.com
 ***
 ## 其他部分
 
-8. 序表
-9. 引用
-10. 锚点
-11. 脚注
-12. 表情
-13. 分隔符
+### 2.1 序表
+#### 无序
+* one
+* two
+* three
+```
+* one
+* two
+* three
++ - 可替代 *
+```
+#### 有序
+1. one
+2. two
+3. three
+```
+1. one
+2. two
+3. three
+```
+#### 序表嵌套
+* one
+    * two
+    * three
+```
+* one
+    * two
+    * three
+```
+### 2.2 清单
+- [x] 选项一
+- [ ] 选项二
+```
+- [x] 选项一
+- [ ] 选项二
+```
+### 2.3 引用
+#### 引用
+> hello world!
+``` 
+> hello world!
+```
+#### 多层嵌套
+> hello world
+>> hello world
+>>> hello world
+```
+> hello world
+>> hello world
+>>> hello world
+```
+### 2.4 锚点
+#### 锚点
+[公式标题锚点](#1)
+
+[需要跳转的目录] {#1}
+```
+[公式标题锚点](#1)
+
+[需要跳转的目录] {#1}
+```
+### 2.5 脚注
+#### 脚注
+Markdown[^1]
+
+[^1]: Markdown是一种纯文本标记语言
+```
+Markdown[^1]
+
+[^1]: Markdown是一种纯文本标记语言
+```
+### 2.6 表情
+#### github表情
+:smile: :bowtie: :+1: :clap: :octocat:
+```
+https://www.webpagefx.com/tools/emoji-cheat-sheet/
+```
+### 2.7 分隔符
+***
+---
+```
+***
+---
+```
 
