@@ -5,3 +5,7 @@ function greeter(person) {
 let user = 'Jane User'
 
 console.log(greeter(user))
+
+var a:number;
+
+// a = 12;
