@@ -1,16 +1,10 @@
-class Person{
-    name: string;
-    age:number;
+class Person1{
+    public name: string;
+    private age:number;
 
-    constructor(name:string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
-
-    showMe () {
-        console.log(this.name, this.age)
-    }
 }
 
-var per = new Person('wangshuang', 18)
-per.showMe()
+var per = new Person1()
+
+per.name = 'blue'
+per.age = 12
