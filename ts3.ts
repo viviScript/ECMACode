@@ -83,3 +83,72 @@ mySearch = function(source: string, subString: string) {
     let result = source.search(subString);
     return result > -1;
 }
+
+interface StringArray {
+    [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ['Bob', 'Fred'];
+
+let mySte: string = myArray[0]
+
+class Animal {
+    name: string;
+}
+
+class Dog extends Animal {
+    breed: string;
+}
+
+interface NotOkay {
+    [x: string]: Animal;
+    [x: string]: Dog;
+}
+
+interface ClockInterface {
+    currentTime: Date
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date;
+    constructor(h:number,m:number) {}
+}
+
+interface ClockInterface {
+    cureentTime: Date;
+    setTime(d: Date);
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) {}}
+
+    interface Shape {
+        color: string;
+    }
+
+    interface Square extends Shape {
+        sideLength: number;
+    }
+
+    let square = <Square>{}
+
+    square.color = 'blue';
+    square.sideLength = 10;
+
+    interface Counter {
+        (start: number): string;
+        interval: number;
+        reset(): void;
+    }
+
+    function getCount(): Counter {
+        let counter = <Counter>function (start: number) {}
+        counter.interval = 123;
+        counter.reset = function() {}
+        return counter;
+    }

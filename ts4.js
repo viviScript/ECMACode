@@ -132,3 +132,4 @@ var Grid = /** @class */ (function () {
 var grid1 = new Grid(1.0);
 var grid2 = new Grid(5.0);
 console.log(grid1.calulate({ x: 1, y: 3 }));
+

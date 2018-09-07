@@ -157,3 +157,11 @@ let grid1 = new Grid(1.0);
 let grid2 = new Grid(5.0);
 
 console.log(grid1.calulate({x:1,y:3}));
+
+
+abstract class Animal6 {
+    abstract makeSound(): void;
+    move(): void {
+        console.log('roaming the earch...')
+    }
+}
