@@ -1,0 +1,226 @@
+# JavaScript对象
+
+## 创建对象
+
+* 在JavaScript中，对象为‘王’。
+* 对象只是一组有命名的值（也称属性）集合的容器。
+
+```javascript
+// 创建对象
+let cody = new Object();
+
+// 为cody对象的各种属性赋值（使用点表示法）
+cody.living = true;
+cody.age = 33;
+cody.gender = 'male';
+
+console.log(cody); // 输出object {living = true, age = 33, gender = 'male'}
+
+Cody对象是一个值，通过创建对象将这个值表示JavaScript对象，给对象命名，然后将属性赋值给对象。
+```
+
+* 对象是属性的容器，每个属性都有一个名称和一个值。
+* JavaScript采用具有命名值属性的容器（即对象）这一概念作为在JavaScript中表达值的构建快。
+
+* ```在JavaScript中，方法是包含Function()对象的属性，其目的是对函数内部的对象进行操作。```
+
+```javascript
+// 创建对象
+let cody = new Object();
+
+// 为cody对象的各种属性赋值（使用点表示法）
+cody.living = true;
+cody.age = 33;
+cody.gender = 'male';
+cody.getGender = function() {return cody.gender;};
+
+console.log(cody.getGenter()); // 输出'male'
+
+如果没有方法，除了用于存储静态属性意外，对象就没有其他太多用途。
+```
+
+* 将构造函数视为模板或者饼干模具，来生成预定义对象。
+
+由Object()构造函数创建的对象与通过string()构造函数创建的字符串对象没有太大区别。
+
+```javascript
+let myObject = new Object();    // 生成一个Object对象
+myObject['0'] = 'f';
+myObject['1'] = 'o';
+myObject['2'] = 'o';
+
+console.log(myObject);  // 输出Object{0='f',1='o',2='o'};
+
+let myString = new String('foo');   // 生成一个string()对象
+
+console.log(myString);  // 输出 foo{0='f',1='o',2='o'}
+```
+
+* ```javaScript是用对象来表示值的。```
+
+```javascript
+// 使用Object()构造函数创建codyA对象
+
+let codyA = new Object();
+codyA.living = true;
+codyA.age = 33;
+codyA.gender = 'male';
+codyA.getGenter = function() {return codyA.gender;};
+
+console.log(codyA); // 输出Object{living= true,age=33,gender='male',...}
+
+/*
+*使用自定义Person()构造函数创建，然后使用'new'关键字进行实例化
+*/
+
+let Person = function (living, age, gender) {
+    this.living = living;
+    this.age = age;
+    this.gender = gender;
+    this.getGenter = function () {
+        return this.gender;
+    }
+};
+
+ // 输出Object{living= true,age=33,gender='male',...}
+let codyB = new Person(true, 33, 'male');
+console.log(codyB);
+```
+
+* ```JavaScript实际上是一种预包装若干原生对象构造函数的语言。这些构造函数生成一些表达特定类型值（如数字，字符串，函数，对象，数组）的复杂对象。```
+* ```也可通过Function()对象创建自定义的对象构造函数，不管是否是用于创建对象的模式，产生的最终结果通常是创建一个复杂的对象。```
+
+## JavaScript构造函数构建并返回对象实例
+
+* 构造函数的作用是创建多个共享特定特性和行为的对象。
+* 构造函数主要是一种用于生成对象的模型或者饼干模具，这些对象具有默认属性和属性方法。
+
+* 如果使用'new'关键字调用某函数，JavaScript会给予该函数特殊待遇，将该函数的this设置为正在构建的新对象，还默认返回新创建的对象（即this），而不是虚假值。该函数返回的新对象则被认为是构建该对象的构造函数的实例。
+
+```javascript
+// person是一个构造函数，可以使用new关键字进行实例化
+let Person = function(living, age, gender) {
+
+    // 下面this表示即将创建的新对象（即，this = new Object();）
+    this.living = living;
+    this.age = age;
+    this.gender = gender;
+    this.getGender = function () {
+        return this.gender;
+    }
+    // 一旦该Person函数使用new关键字调用，就返回this，而不是undefined。
+};
+
+// 实例化Person对象，命名为Cody
+let cody = new Person(true, 33, 'male');
+
+// cody是一个对象，并且是Person()的一个实例
+console.log(tyoeof cody);   // 输出Objec
+console.log(cody);  // 输出cody内部的属性和值
+console.log(cody.constructor);  // 输出Person()函数
+```
+
+自定义构造函数创建对象，与使用Array()构造函数创建Array()对象没有什么不同；
+
+```javascript
+// 实例化Array对象，命名为myArray
+let myArray = new Array();  // myArray是Array的一个实例
+
+// myArray是一个对象，并且是Array()构造函数的一个实例
+
+console.log(typeof myArray);    // 输出Object
+
+console.log(myArray);   // []
+
+console.log(myArray.constructor);   // 输出Array()
+```
+
+* ```在JavaScript中，大多数值（不包括原始值），都涉及到正在被创建的对象，或者是从构造函数实例化的对象。构造函数返回的对象被称为实例。```
+
+## JavaScript原生/内置对象构造函数
+
+* JavaScript语言包含9哥原生（或内置）对象构造函数。
+  * Number()
+  * String()
+  * Boolean()
+  * Object()
+  * Array()
+  * Function()
+  * Date()
+  * RegExp()
+  * Error()
+* JavaScript主要是由这9个对象（以及字符串，数字，布尔原始值）来创建的。
+* ```Math对象是一个静态对象，而不是构造函数。我们可以直接使用它，而不必使用new关键字去调用。实际上Math只是一个由JavaScript设置的对象命名空间，用于存储数学函数。```
+* 原生对象也被称为‘全局对象’，在JavaScript中原生就是可以使用的对象，它是作用域链中的最高层级。
+* Number()、String()、Boolean()构造函数不仅能构建对象，而且能为字符串、数字、布尔值提供原始值。如果直接调用这些构造函数，就会返回一个复杂对象。而如果只是简单的在代码中表示一个数字、字符串、布尔值，那么构造函数将返回一个原始值，而不是复杂的对象值。
+
+## 用户自定义/非原生对象构造函数
+
+* ```自定义的构造函数，可以生成多个自定义对象实例。```
+
+```javascript
+// person是一个构造函数，可以使用new关键字进行实例化
+let Person = function(living, age, gender) {
+
+    // 下面this表示即将创建的新对象（即，this = new Object();）
+    this.living = living;
+    this.age = age;
+    this.gender = gender;
+    this.getGender = function () {
+        return this.gender;
+    }
+    // 一旦该Person函数使用new关键字调用，就返回this，而不是undefined。
+};
+
+// 实例化Person对象，命名为Cody
+let cody = new Person(true, 33, 'male');
+console.log(cody);  // 输出object{living=true,age=33,gender='male',...};
+
+let cody = new Person(true, 34, 'male');
+console.log(cody);  // 输出object{living=true,age=34,gender='male',...};
+
+```
+
+* ```创建自定义构造函数，只是在使用JavaScript本身在原生构造函数中所使用的相同的模式。```
+* ```创建将要与new操作符一起使用的自定义构造函数时，最佳的做法是保持构造函数名称的第一个字符大写：Person(),而不是person()。```
+
+## 使用new操作符实例化构造函数
+
+* ```构造函数从根本上来说时用于创建预配置对象的模具模版。```
+
+```javascript
+let myString = new String('foo');
+
+console.log(myString);  // 输出foo{0='f',1='o',2='o'}
+
+```
+
+* JavaScript语言具有9种原生预定义的构造函数，可以在任意一个构造函数上应用new操作符来实例化一个对象实例。
+
+```javascript
+// 使用new关键字实例化每个原生构造函数
+
+let myNumber = new Number(33);
+let myString = new String('male');
+let myBoolean = new Boolean(false);
+let myObject = new Object();
+let myArray = new Array('foo','bar');
+let myFunction = new Function('x','y','return x*y');
+let myDate = new Date();
+let myRegExp = new RegExp();
+let myError = new Error();
+
+// 输出/验证哪个构造函数创建了该对象
+console.log(myNumber.constructor);  // 输出Number()
+console.log(myString.constructor);  // 输出String()
+console.log(myBoolean.constructor);  // 输出Boolean()
+console.log(myArray.constructor);  // 输出Array()
+console.log(myFunction.constructor);  // 输出Function()
+console.log(myDate.constructor);  // 输出Date()
+console.log(myRegExp.constructor);  // 输出RegExp()
+console.log(myError.constructor);  // 输出Error()
+```
+
+* ```Math是一个静态对象---其他方法的容器，它不是使用new运算符的构造函数。```
+
+## 从构造函数创建字面量值

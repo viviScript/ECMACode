@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceFolder}/tsDemo.ts"
+            "program": "${workspaceFolder}/JavaScript对象/js01.js"
         }
     ]
 }
