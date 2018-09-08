@@ -224,3 +224,144 @@ console.log(myError.constructor);  // 输出Error()
 * ```Math是一个静态对象---其他方法的容器，它不是使用new运算符的构造函数。```
 
 ## 从构造函数创建字面量值
+
+```javascript
+let myNumber = new Number(23); // 对象
+let myNumberLiteral = 23;   // 原始数字值，而非对象
+
+let myString = new String('male');  // 对象
+let myStringLiteral = 'male'    // 原始字符值，而非对象
+
+let myBoolean = new Boolean(false);  // 对象
+let myBooleanLiteral = false;   // 原始布尔值，而非对象
+
+let myObject = new Object();
+let myObjectLiteral = {};
+
+let myArray = new Array('foo','bar');
+let myArrayLiteral = ['foo','bar'];
+
+let myFunction = new Function();
+let myFunctionLiteral = function () {};
+
+let myRegExp = new RegExp();
+let myRegExpLiteral = /\bt[a-z]+\b/;
+
+// 验证创建 自同样的构造函数的字面量
+
+console.log(myNumber.constructor, myNumberLiteral.construtor);
+console.log(myString.constructor, myStringLiteral.construtor);
+console.log(myBoolean.constructor, myBooleanLiteral.construtor);
+console.log(myObject.constructor, myBooleanLiteral.construtor);
+console.log(myArray.constructor, myArrayLiteral.construtor);
+console.log(myFunction.constructor, myFunctionLiteral.construtor);
+console.log(myRegExp.constructor, myRegExpLiteral.construtor);
+
+// 都将输出对象，undefined。
+```
+
+* 在针对字符串、数字和布尔值使用字面量值时，只有在该值被视为对象的情况下才会创建实际的复杂对象。
+
+## 原始值（或简单值）
+
+* ```数值、字符串、boolean、null、undefined等JavaScript值被视为原始值。因为他们是不可细化的。```
+
+```javascript
+let myString = 'string';
+let myNumber = 10;
+let myBoolean = false;
+let myNull = null;
+let myUndefined = undefined;
+
+console.log(myString,myNumber,myBoolean,myNull,myUndefined);
+
+// 假设一个像数组或对象这样的复杂对象可以由多个原始值组成，变成一个复杂的多值集
+
+let myObject = {
+    myString: 'string',
+    myNumber: 10,
+    myBoolean: false,
+    myNull: null,
+    myUndefined: undefined
+}
+
+console.log(myObject)
+
+let myArray = ['string', 10, false, null, undefined]
+
+console.log(myArray)
+```
+
+* ```原始值是表示JavaScript中可用的数据/信息的最底层形式（即最简单形式）```
+
+## null、undefined、'string'、10、true和false等原始值不是对象
+
+* ```原始值的特殊之处在于他们是用于表示简单值。```
+
+## 如何存储和赋值原始值
+
+* ```原始值是作为不可细化的值进行存储和操作的。引用他们会转移其值。```
+
+```javascript
+let myString = 'foo';   // 创建原始值字符对象
+let myStringcopy = myString;    // 复制字符并存储到新变量上
+
+let myString = null;    //  操作存储在myString变量中的值
+
+/*
+*原来的值从myString赋值到了myStringcopy上，更新myString后，再检测myStringcopy可证实
+*/
+
+console.log(myString, myStringcopy);    // 输出null, foo
+```
+
+## 原始值比较 采用 值比较
+
+* 可以通过比较原始值来确定其值在字面量上是否相同。
+
+```javascript
+let price1 = 10;
+let price2 =10;
+let price3 = new Number('10');  // 复杂数字对象，因为使用了new
+let price4 = price3
+
+console.log(price1 === price2); // 输出true
+
+// 输出false，因为price3包含了复杂数字变量，而price1是原始值
+console.log(price1 === price3)
+
+// 输出true，因为复杂对象采用引用比较，而不是值比较
+console.log(price3 === priec4)
+
+// 如果price4的值为原始值
+price4 = 10;
+console.log(price4 === price3); // false，price4此刻是原始值，而非复杂对象
+```
+
+## 原始值(String,Number,Boolean)在被用作对象时就像对象
+
+* ```原始值被当作构造函数创建的一个对象来使用时，JavaScript会将其转换为一个对象，以便可以使用对象的特性，而后抛弃对象性质，并将它变回原始值。```
+
+```javascript
+// 生成原始值
+let mynull = null
+let myUndefined = undefined;
+let primitiveString1 = 'foo';
+let primitiveString2 = String('foo')
+let primitiveNumber1 = 10;
+let primitiveNumber2 = Number('10')
+
+// 把原始值当对象使用时，原始值就会转化为对象
+
+// 输出string string
+console.log(primitiveString1.toString(), primitiveString2.toString())
+
+```
+
+## 复杂值（或组合值)
+
+* ```原生对象构造函数Object()、Array()、Function()、Date()、Error()、RegExp()是复杂类型，因为它们包含一个或多个原始值或复杂值。```
+
+* ```本质上，复杂值可以由很多不同类型的JavaScript对象组成。```
+
+* ```复杂值是各种值的组合，并且在复杂性和组合方面与原始值不同。```
