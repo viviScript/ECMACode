@@ -92,3 +92,13 @@ let a = 1;
 let b = a;
 a = 3;
 console.log(a,b)
+
+let myObject1 = {}
+myObject2 = myObject1
+myObject1.foo = 'bar'
+myObject2.bar = 'foo'
+console.log(myObject1,myObject2)
+
+let foo = {}
+console.log(foo.constructor === Object)
+console.log(foo.constructor)

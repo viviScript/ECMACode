@@ -301,6 +301,7 @@ console.log(myArray)
 ## 如何存储和赋值原始值
 
 * ```原始值是作为不可细化的值进行存储和操作的。引用他们会转移其值。```
+* ```原始值的赋值与存储是会重新指向值的引用地址,而复杂值则不会更改引用地址```
 
 ```javascript
 let myString = 'foo';   // 创建原始值字符对象
@@ -364,4 +365,101 @@ console.log(primitiveString1.toString(), primitiveString2.toString())
 
 * ```本质上，复杂值可以由很多不同类型的JavaScript对象组成。```
 
+```javascript
+// 简单的原始值，原始值不能代表复杂值，而复杂值可以封装成任意JavaScript值
+let myString = 'string';
+let myNumber = 10;
+let myBoolean = false;
+let myNull = null;
+let myUndefined = undefined;
+
+console.log(myString,myNumber,myBoolean,myNull,myUndefined);
+
+// 假设一个像数组或对象这样的复杂对象可以由多个原始值组成，变成一个复杂的多值集
+
+let myObject = {
+    myString: 'string',
+    myNumber: 10,
+    myBoolean: false,
+    myNull: null,
+    myUndefined: undefined
+}
+
+console.log(myObject)
+
+let myArray = ['string', 10, false, null, undefined]
+
+console.log(myArray)
+```
+
 * ```复杂值是各种值的组合，并且在复杂性和组合方面与原始值不同。```
+
+## 如何存储或复制复杂值
+
+* ```复杂值是通过引用进行存储和操作的```
+* ```创建一个包含复杂对象的变量时，其值是内存中的一个引用地址。```
+* ```引用一个对象时，使用它的名称（即变量或对象属性）通过内存中的引用地址获取该对象值```
+
+```javascript
+let myObject = {}
+let copyOfMyObject = myObject;  // 没有复制值，而是复制了引用
+
+myObject.foo = 'bar'    // 操作myObject中的值
+
+// 输出myObject和copyOfMyObject的值，则均会输出foo属性，因为他们引用的是同一个地址
+console.log(myObject,copyOfMyObject);   // 输出 Object{foo='bar'}
+```
+
+* ```复杂值的内存引用地址未改变，所以都指向的同一个内存地址，因为都会改变```
+* ```当更改复杂值时，所有引用相同地址的变量的值都会被修改，因为复杂值是通过引用进行存储的。```
+
+## 复杂对象比较 采用 引用比较
+
+* 复杂对象只有在引用相同的对象（即有相同的地址）时才相等。
+
+```javascript
+let objectFoo = { same: 'same' }
+let objectBar = { same: 'same' }
+
+// 输出false，JS并不关注他们的类型是否相同
+console.log(objectFoo === objectBar)
+
+// 复杂对象如何才相等
+let objectA = {foo: 'bar'};
+let objectB = objectA;
+
+console.log(objectA === objectB);   // true,因为他们引用的是同一个内存地址
+```
+
+* ```指向内存中复杂对象的变量，只有在引用相同‘地址’的情况下才是相等的。相反，两个单独创建的对象，即使具有相同的类型并拥有完全相同的属性，他们也是不相等的。```
+
+## 复杂对象具有动态属性
+
+* ```复杂对象可以根据需求有任意多个引用，即使对象改变，他们也总指向同一个对象。```
+
+```javascript
+let objA = {property: 'value'};
+let pointer1 = objA;
+var pointer2 = pointer1;
+
+// 更新objA.property，所有引用都会被更新了
+ObjA.property = null;
+
+// 输出‘null null null'，因为objA,proter1,proter2引用的都是同一对象.
+console.log(objA.property,proter1.property,proter2.property)
+```
+
+## typeof操作符
+
+* typeof操作符用于返回正在使用的类型。
+
+## 构造函数实例都拥有指向其构造函数的Constructor属性
+
+* ```任何对象实例化时，都是在幕后将constructor属性创建为对象/实例的属性。这是指创建对象的构造函数。```
+
+```javascript
+let foo = {};
+coonsole.log(foo.constructor === Object);   // 输出true 因为object()构建了foo
+
+console.log(foo.constructor);   // 指向object()构造函数
+```
