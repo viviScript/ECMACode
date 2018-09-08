@@ -463,3 +463,31 @@ coonsole.log(foo.constructor === Object);   // 输出true 因为object()构建�
 
 console.log(foo.constructor);   // 指向object()构造函数
 ```
+
+## 验证对象是否时特定构造函数的实例
+
+* ```是痛instanceof操作符，可以确定(true或false)一个对象是否是特定构造函数的实例。```
+
+* ```instanceof只适用与构造函数创建返回的复杂对象和实例```
+
+```javascript
+// 用户自定义对象构造函数
+let CustomConstructor = function () {this.foo = 'bar'};
+
+// 初始化CustomConstructor的实例
+let instanceOfCustomObject = new CustomConstructor();
+
+// 输出true
+console.log(instanceOfCustomObject instanceof CustomConstructor);
+
+// 原生对象亦是如此
+console.log(new Array('foo') instanceof Array)  // 输出true
+```
+
+## 构造函数创建的实例可拥有自己独立的属性（实例属性）
+
+```javascript
+let myArray = new Array();
+myArray.prop = 'test';
+console.log(myArray.prop); //  输出‘test'
+```
